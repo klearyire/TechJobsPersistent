@@ -20,6 +20,10 @@ where TABLE_NAME = 'jobs'
 
 
 --Part 2
+select Name from employers
+where location="St. Louis City";
+
+
 
 --Part 3
 
