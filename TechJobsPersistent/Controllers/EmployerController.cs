@@ -15,50 +15,54 @@ namespace TechJobsPersistent.Controllers
     public class EmployerController : Controller
     {
 
-        private JobDbContext context {get; set;}
+        private JobDbContext _context;
 
-        public EmployerController(JobDbContext dbContext)
+        public EmployerController(JobDbContext context)
         {
-            context = dbContext;
+            _context = context;
         }
 
-        // GET: /<controller>/
+        // GET: /Employer
         public IActionResult Index()
         {
-            List<Employer> employers = context.Employers.ToList();
+            List<Employer> employers = _context.Employers.ToList();
                
             return View(employers);
         }
 
+        // GET: /Employer/Add
         public IActionResult Add()
         {
-            AddEmployerViewModel addEmployerViewModel = new AddEmployerViewModel();
+            AddEmployerViewModel viewModel = new AddEmployerViewModel();
 
-            return View(addEmployerViewModel);
+            return View(viewModel);
         }
 
-        public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
+        // POST: /Employer/ProcessAddEmployerForm
+        [HttpPost]
+        public IActionResult ProcessAddEmployerForm(AddEmployerViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Employer newEmployer = new Employer()
+                Employer newEmployer = new Employer
                 {
-                    Name = addEmployerViewModel.Name,
-                    Location = addEmployerViewModel.Location
+                    Name = viewModel.Name,
+                    Location = viewModel.Location
                 };
 
-                context.Employers.Add(newEmployer);
-                context.SaveChanges();
+                _context.Employers.Add(newEmployer);
+                _context.SaveChanges();
 
                 return Redirect("/Employer");
             }
 
-            return View(addEmployerViewModel);
+            return View("Add", viewModel);
         }
 
+        // GET: /Employer/About/{id}
         public IActionResult About(int id)
         {
-            Employer employer = context.Employers.Find(id);
+            Employer employer = _context.Employers.Find(id);
 
             return View(employer);
         }
