@@ -1,8 +1,5 @@
 --Part 1
 
---No idea what I'm supposed to do here, just list the columns and datatypes? I've also 
---included the simple SQL query, just in case.
-
 SELECT 
 TABLE_CATALOG,
 TABLE_SCHEMA,
@@ -25,7 +22,7 @@ where TABLE_NAME = 'jobs'
 
 
 --Part 2
-SELECT name FROM Employers
+SELECT Name FROM Employers
 WHERE Location="St. Louis City";
 
 
@@ -34,4 +31,4 @@ WHERE Location="St. Louis City";
 SELECT * FROM Skills
 LEFT JOIN jobskills ON Skills.Id = JobSkills.SkillId
 WHERE JobSkills.JobId IS NOT NULL
-ORDER BY name ASC;
+ORDER BY Name ASC;
