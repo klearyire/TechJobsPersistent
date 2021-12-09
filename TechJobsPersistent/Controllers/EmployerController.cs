@@ -56,7 +56,7 @@ namespace TechJobsPersistent.Controllers
                 return Redirect("/Employer");
             }
 
-            return View("Add", viewModel);
+            return View("~/Views/Employer/Add.cshtml", viewModel);
         }
 
         // GET: /Employer/About/{id}

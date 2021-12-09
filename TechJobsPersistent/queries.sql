@@ -17,13 +17,21 @@ where TABLE_NAME = 'jobs'
 --longtext Name
 --int EmployerId
 
+--Or another way:
+--Jobs.Id = int
+--Jobs.Name = longtext
+--Jobs.EmployerId = int
+
 
 
 --Part 2
-select Name from employers
-where location="St. Louis City";
+SELECT name FROM Employers
+WHERE Location="St. Louis City";
 
 
 
 --Part 3
-
+SELECT * FROM Skills
+LEFT JOIN jobskills ON Skills.Id = JobSkills.SkillId
+WHERE JobSkills.JobId IS NOT NULL
+ORDER BY name ASC;
