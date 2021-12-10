@@ -53,20 +53,20 @@ namespace TechJobsPersistent.Controllers
                     Employer = theEmployer
                 };
 
-                _context.Jobs.Add(newJob);
-                _context.SaveChanges();
-
                 foreach (var skill in selectedSkills)
                 {
                     JobSkill newJobSkill = new JobSkill
                     {
                         Job = newJob,
                         JobId = newJob.Id,
-                        SkillId = Int32.Parse(skill)
+                        SkillId = int.Parse(skill)
                     };
 
                     _context.JobSkills.Add(newJobSkill);
                 }
+
+                _context.Jobs.Add(newJob);
+                _context.SaveChanges();
 
                 return Redirect("Index");
             }
