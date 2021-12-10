@@ -7,6 +7,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Employer</th>
+            <th>Location</th>
             <th>Skills</th>
         </tr>
         @foreach (var job in ViewBag.jobs)
@@ -15,6 +16,7 @@
                 <td>@job.JobId</td>
                 <td>@job.Name</td>
                 <td>@job.EmployerName</td>
+                <td>@job.Location</td>
                 <td>@job.SkillText</td>
             </tr>
         }
